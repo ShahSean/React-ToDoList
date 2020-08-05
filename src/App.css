@@ -3,3 +3,15 @@ body {
 
   /* filter: blur(1px); */
 }
+#body-container h2 {
+  font-family: "Shadows Into Light", cursive;
+  font-size: xxx-large;
+  text-align: center;
+  /* opacity: 0.5; */
+}
+#main-header {
+  background-color: rgba(228, 116, 118, 0.514);
+  margin: 10%;
+  margin-top: 40px;
+  border-radius: 0.9rem 0.9rem 0.4rem 0.4rem;
+}
