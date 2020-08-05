@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In order to preview it click,
+In order to preview this project,
 
-# [HERE](https://githubbox.com/ShahSean/React-ToDoList)
+# [Click HERE](https://githubbox.com/ShahSean/React-ToDoList)
 
 ## Available Scripts
 
