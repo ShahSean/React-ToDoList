@@ -1,0 +1,12 @@
+#nav-container {
+  margin-top: 3px;
+  background-color: rgba(129, 28, 224, 0.664);
+  border-radius: 0.4rem;
+  padding-bottom: 3%;
+  padding-top: 0%;
+  height: 50px;
+}
+#nav-container input {
+  outline: none;
+  border: none;
+}
