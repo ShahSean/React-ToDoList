@@ -1,10 +1,12 @@
 #nav-container {
   margin-top: 3px;
-  background-color: rgba(129, 28, 224, 0.664);
+  background-color: rgba(129, 28, 224, 0.464);
   border-radius: 0.4rem;
-  padding-bottom: 3%;
-  padding-top: 0%;
+  padding: 1% 5%;
   height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #nav-container input {
   outline: none;
