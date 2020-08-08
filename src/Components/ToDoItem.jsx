@@ -3,8 +3,8 @@ import "./ToDoItem.css"
 
 export default function ToDoItem(props) {
     return (
-        <div>
-            <p>{props.toDoText}</p>
+        <div className="toDoItem">
+            <label>{props.toDoText}</label>
           
         </div>
     )

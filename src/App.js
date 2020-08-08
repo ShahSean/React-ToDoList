@@ -13,8 +13,6 @@ function App() {
       {text: "vohoWooo", isDone: false}
     ])
 
-
-
     let addTaskHandler = (taskText) =>{
       const newTask = [...toDo, {text: taskText, isDone: false}]
       setToDo(newTask);
@@ -23,13 +21,11 @@ function App() {
     }
 
 
-
-
   return (
     <div id="body-container" >
       <h2 id="main-header"> To Do List </h2>
       <NavBar addTaskBtnHandler={addTaskHandler}/>
-      <ToDoContainer toDoText={toDo.map((todo) => todo.text )}/>
+      <ToDoContainer toDo={toDo}/>
     </div>
     
   );
@@ -38,7 +34,3 @@ function App() {
 
 
 export default App;
-// const addToDo = text => {
-//     cosnt newToDos = [...todos, {text}];
-//     setToDos(newToDos)
-// }
