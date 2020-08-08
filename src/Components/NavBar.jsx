@@ -11,12 +11,11 @@ const addBtnHandler= (e) => {
     e.preventDefault();
     if(!tempUsrInput) return
     props.addTaskBtnHandler(tempUsrInput)
-    console.log("hi this is: ", e)
     setTempUsrInput('')
 }
 const userInputHandler= (e) =>{
     setTempUsrInput(e.target.value)
-    console.log(e.target.value)
+
 }
 
 
@@ -32,19 +31,6 @@ const userInputHandler= (e) =>{
 
 
 
-/////////////////////
-
-// const handleSubmit = e => {
-//     e.preventDefault();
-//     if(!value) return;
-//     addToDo(value);
-//     setValue('');
-// }
 
 
-
-// const addToDo = text => {
-//     cosnt newToDos = [...todos, {text}];
-//     setToDos(newToDos)
-// }
 

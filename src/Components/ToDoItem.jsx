@@ -5,6 +5,7 @@ export default function ToDoItem(props) {
     return (
         <div>
             <p>{props.toDoText}</p>
+          
         </div>
     )
 }

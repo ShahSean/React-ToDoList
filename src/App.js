@@ -9,22 +9,36 @@ function App() {
   const [toDo, setToDo] = useState(
     [
       {text: "this is a text", isDone: false},
-      {text: "Take out Tr", isDone: true},
+      {text: "Take out Trash", isDone: true},
       {text: "vohoWooo", isDone: false}
     ])
+
+
+
+    let addTaskHandler = (taskText) =>{
+      const newTask = [...toDo, {text: taskText, isDone: false}]
+      setToDo(newTask);
+      toDo.map((todo) => console.log(todo));
+      
+    }
+
+
+
 
   return (
     <div id="body-container" >
       <h2 id="main-header"> To Do List </h2>
       <NavBar addTaskBtnHandler={addTaskHandler}/>
-      <ToDoContainer toDoText={toDo.map((todo) => todo.text)}/>
+      <ToDoContainer toDoText={toDo.map((todo) => todo.text )}/>
     </div>
     
   );
 }
 
-let addTaskHandler = (taskText) =>{
-  console.log("This is from main App: ", taskText)
-}
+
 
 export default App;
+// const addToDo = text => {
+//     cosnt newToDos = [...todos, {text}];
+//     setToDos(newToDos)
+// }
