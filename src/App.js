@@ -16,7 +16,6 @@ function App() {
     let addTaskHandler = (taskText) =>{
       const newTask = [...toDo, {text: taskText, isDone: false}]
       setToDo(newTask);
-      toDo.map((todo) => console.log(todo));
       
     }
 
