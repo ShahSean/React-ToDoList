@@ -3,18 +3,21 @@ import ToDoItem from "./ToDoItem.jsx"
 import "./ToDoContainer.css"
 
 export default function ToDoContainer(props) {
-    const addTaskHandler = () =>{
-        props.toDo.map((toDo) => 
-            <ToDoItem toDo={toDo} ></ToDoItem> 
-        )
-    }
+   
     return (
         <div id="to-do-container">
-           boo: 
+           bo
            <div>
-               {addTaskHandler()} 
+               {addTaskHandler(props)} 
            </div>
         </div>
     )
    
+}
+
+const addTaskHandler = (props) =>{
+   return  props.toDo.map((toDo) => 
+        <ToDoItem toDo={toDo} />
+    )
+    
 }
