@@ -1,23 +1,15 @@
-import React from 'react'
-import ToDoItem from "./ToDoItem.jsx"
-import "./ToDoContainer.css"
+import React from "react";
+import ToDoItem from "./ToDoItem.jsx";
+import "./ToDoContainer.css";
 
 export default function ToDoContainer(props) {
-   
-    return (
-        <div id="to-do-container">
-           bo
-           <div>
-               {addTaskHandler(props)} 
-           </div>
-        </div>
-    )
-   
+  return (
+    <div id="to-do-container">
+      <div>{addTaskHandler(props)}</div>
+    </div>
+  );
 }
 
-const addTaskHandler = (props) =>{
-   return  props.toDo.map((toDo) => 
-        <ToDoItem toDo={toDo} />
-    )
-    
-}
+const addTaskHandler = (props) => {
+  return props.toDo.map((toDo) => <ToDoItem toDo={toDo} key={toDo.id} />);
+};
