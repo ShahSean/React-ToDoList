@@ -7,11 +7,23 @@ export default function NavBar(props) {
   const addBtnHandler = (e) => {
     e.preventDefault();
     if (!tempUsrInput) return;
-    props.addTaskBtnHandler(tempUsrInput);
+    props.addTaskHandler(tempUsrInput);
     setTempUsrInput("");
   };
+
   const userInputHandler = (e) => {
+    if (e.key === "Enter") {
+      console.log("enterKey pressed");
+      enterKeyHandler(e);
+    }
     setTempUsrInput(e.target.value);
+  };
+
+  const enterKeyHandler = (e) => {
+    if (!tempUsrInput) return;
+    console.log("inisde Enter handler");
+    props.addTaskHandler(tempUsrInput);
+    setTempUsrInput("");
   };
 
   return (
@@ -22,6 +34,7 @@ export default function NavBar(props) {
         type="text"
         placeholder="Enter your task here !"
         onChange={userInputHandler}
+        value={tempUsrInput}
       />
       <button onClick={addBtnHandler}>add</button>
     </div>

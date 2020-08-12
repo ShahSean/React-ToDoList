@@ -19,7 +19,7 @@ function App() {
   return (
     <div id="body-container">
       <h2 id="main-header"> To Do List </h2>
-      <NavBar addTaskBtnHandler={addTaskHandler} />
+      <NavBar addTaskHandler={addTaskHandler} />
       <ToDoContainer toDo={toDo} />
     </div>
   );
