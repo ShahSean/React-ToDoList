@@ -26,17 +26,13 @@ function App() {
   // };
 
   let completedTaskHandler = (e) => {
-    console.log("I was marked", e, " boo: ", e.traget.dataset.id);
+    console.log("I was marked", e);
   };
   return (
     <div id="body-container">
       <h2 id="main-header"> To Do List </h2>
       <NavBar addTaskHandler={addTaskHandler} />
-      <ToDoContainer
-        toDo={toDo}
-        data-id={toDo.id}
-        completedTaskHandler={completedTaskHandler}
-      />
+      <ToDoContainer toDo={toDo} completedTaskHandler={completedTaskHandler} />
     </div>
   );
 }

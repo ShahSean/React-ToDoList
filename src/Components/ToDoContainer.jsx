@@ -15,7 +15,6 @@ const addTaskHandler = (props) => {
     <ToDoItem
       toDo={toDo}
       key={toDo.id}
-      data-id={toDo.id}
       completedTask={props.completedTaskHandler}
     />
   ));

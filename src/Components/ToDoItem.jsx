@@ -6,8 +6,7 @@ export default function ToDoItem(props) {
     <div className="toDoItem">
       <input
         type="checkbox"
-        data-id={props.todo.id}
-        onChange={props.completedTask}
+        onChange={() => props.completedTask(props.toDo.id)}
       />
       <label
         style={{ textDecoration: props.toDo.isDone ? "line-through" : "" }}
