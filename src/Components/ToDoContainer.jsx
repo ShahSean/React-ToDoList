@@ -11,5 +11,11 @@ export default function ToDoContainer(props) {
 }
 
 const addTaskHandler = (props) => {
-  return props.toDo.map((toDo) => <ToDoItem toDo={toDo} key={toDo.id} />);
+  return props.toDo.map((toDo) => (
+    <ToDoItem
+      toDo={toDo}
+      key={toDo.id}
+      completedTask={props.completedTaskHandler}
+    />
+  ));
 };

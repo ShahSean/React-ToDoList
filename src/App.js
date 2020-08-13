@@ -8,19 +8,30 @@ function App() {
   const [toDo, setToDo] = useState([
     { text: "this is a text", isDone: false, id: uuidv4() },
     { text: "Take out Trash", isDone: true, id: uuidv4() },
-    { text: "vohoWooo", isDone: false, id: uuidv4() },
+    { text: "This is a simple Task", isDone: false, id: uuidv4() },
   ]);
 
+
+}
   let addTaskHandler = (taskText) => {
     const newTask = [...toDo, { text: taskText, isDone: false, id: uuidv4() }];
     setToDo(newTask);
+  };
+
+  let completedTaskHandler = (index) => {
+    const newToDo = [...toDo];
+    newToDo.map((todo) => {
+      if (todo.id === index) todo.isDone = true;
+    });
+    setToDo(newToDo);
+    console.log("This is the ID: ", index);
   };
 
   return (
     <div id="body-container">
       <h2 id="main-header"> To Do List </h2>
       <NavBar addTaskHandler={addTaskHandler} />
-      <ToDoContainer toDo={toDo} />
+      <ToDoContainer toDo={toDo} completedTaskHandler={completedTaskHandler} />
     </div>
   );
 }
