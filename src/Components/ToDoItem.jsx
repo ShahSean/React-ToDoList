@@ -4,7 +4,11 @@ import "./ToDoItem.css";
 export default function ToDoItem(props) {
   return (
     <div className="toDoItem">
-      <input type="checkbox" onChange={props.completedTask(props.toDo.id)} />
+      <input
+        type="checkbox"
+        data-id={props.todo.id}
+        onChange={props.completedTask}
+      />
       <label
         style={{ textDecoration: props.toDo.isDone ? "line-through" : "" }}
       >
