@@ -15,16 +15,20 @@ function App() {
     setToDo(newTask);
   };
 
-  let completedTaskHandler = (index) => {
+  let completedTaskHandler = (id) => {
     const newToDo = [...toDo];
     newToDo.map((todo) => {
-      if (todo.id === index) todo.isDone = !todo.isDone;
+      if (todo.id === id) todo.isDone = !todo.isDone;
     });
     setToDo(newToDo);
   };
 
-  let deleteHandler = (e) => {
-    console.log("I was clicked", e.target);
+  let deleteHandler = (id) => {
+    const tempToDo = [...toDo];
+    tempToDo.map((todo, index) => {
+      if (todo.id === id) tempToDo.splice(index, 1);
+    });
+    setToDo(tempToDo);
   };
 
   return (

@@ -14,7 +14,7 @@ export default function ToDoItem(props) {
         {" "}
         {props.toDo.text}{" "}
       </label>
-      <button onClick={props.delete}> delete</button>
+      <button onClick={() => props.delete(props.toDo.id)}> delete</button>
     </div>
   );
 }
