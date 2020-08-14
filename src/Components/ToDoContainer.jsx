@@ -16,6 +16,7 @@ const addTaskHandler = (props) => {
       toDo={toDo}
       key={toDo.id}
       completedTask={props.completedTaskHandler}
+      delete={props.deleteHandler}
     />
   ));
 };

@@ -19,20 +19,23 @@ function App() {
     const newToDo = [...toDo];
     newToDo.map((todo) => {
       if (todo.id === index) todo.isDone = !todo.isDone;
-      console.log("todoID: ", todo.id, "  cmplt-index:", index);
     });
     setToDo(newToDo);
-    console.log("This is the ID: ", index);
   };
 
-  // let completedTaskHandler = (id) => {
-  //   console.log("I was marked", id);
-  // };
+  let deleteHandler = (e) => {
+    console.log("I was clicked", e.target);
+  };
+
   return (
     <div id="body-container">
       <h2 id="main-header"> To Do List </h2>
       <NavBar addTaskHandler={addTaskHandler} />
-      <ToDoContainer toDo={toDo} completedTaskHandler={completedTaskHandler} />
+      <ToDoContainer
+        toDo={toDo}
+        completedTaskHandler={completedTaskHandler}
+        deleteHandler={deleteHandler}
+      />
     </div>
   );
 }

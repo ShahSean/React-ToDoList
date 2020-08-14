@@ -30,7 +30,7 @@ export default function NavBar(props) {
     <div id="nav-container">
       <button>Search</button>
       <input
-        size="30"
+        size="25"
         type="text"
         placeholder="Enter your task here !"
         onChange={userInputHandler}
