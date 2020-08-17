@@ -5,7 +5,11 @@ import "./ToDoContainer.css";
 export default function ToDoContainer(props) {
   return (
     <div id="to-do-container">
-      <div>{addTaskHandler(props)}</div>
+      <div>
+        {() => {
+          if (props.toDo) addTaskHandler();
+        }}
+      </div>
     </div>
   );
 }
