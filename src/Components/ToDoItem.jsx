@@ -2,8 +2,18 @@ import React from "react";
 import "./ToDoItem.css";
 
 export default function ToDoItem(props) {
+  // https://www.youtube.com/watch?v=Q1PYQPK9TaM
+  const dragStartHandler = (e, id) => {
+    console.log("drag started event: ", e, "ID is: ", id);
+  };
   return (
-    <div className="toDoItem">
+    <div
+      className="toDoItem"
+      draggable
+      onDragStart={(e) => {
+        dragStartHandler(e, props.toDo.id);
+      }}
+    >
       <input
         type="checkbox"
         onChange={() => props.completedTask(props.toDo.id)}

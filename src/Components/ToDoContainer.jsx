@@ -6,9 +6,10 @@ export default function ToDoContainer(props) {
   return (
     <div id="to-do-container">
       <div>
-        {() => {
+        {/* {() => {
           if (props.toDo) addTaskHandler();
-        }}
+        }} */}
+        {addTaskHandler(props)}
       </div>
     </div>
   );

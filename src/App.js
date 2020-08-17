@@ -5,12 +5,17 @@ import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 
 function App() {
-  const [toDo, setToDo] = useState(localStorage.getItem("toDo") || "");
+  const [toDo, setToDo] = useState([
+    { text: "this is a text", isDone: false, id: uuidv4() },
+    { text: "Take out Trash", isDone: true, id: uuidv4() },
+    { text: "This is a simple Task", isDone: false, id: uuidv4() },
+  ]);
 
   // Saving Values into Local Storage after any change on State
-  useEffect(() => {
-    localStorage.setItem("toDo", JSON.stringify(toDo));
-  });
+  // https://www.robinwieruch.de/local-storage-react
+  // useEffect(() => {
+  //   localStorage.setItem("toDo", JSON.stringify(toDo));
+  // });
 
   let addTaskHandler = (taskText) => {
     const newTask = [...toDo, { text: taskText, isDone: false, id: uuidv4() }];
