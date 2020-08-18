@@ -1,18 +1,30 @@
-import React from "react";
+import React, {useState}from "react";
 import "./ToDoItem.css";
 
 export default function ToDoItem(props) {
+  const [dragging, setDragging] = useState(false)
   // https://www.youtube.com/watch?v=Q1PYQPK9TaM
   const dragStartHandler = (e, id) => {
-    console.log("drag started event: ", e, "ID is: ", id);
+    setTimeout(() =>{
+      setDragging(true);
+    }, 0)
   };
+
+  const dragEndhandler = () =>{
+    setDragging(false);
+  }
+
   return (
     <div
-      className="toDoItem"
       draggable
       onDragStart={(e) => {
         dragStartHandler(e, props.toDo.id);
       }}
+      onDragEnd={(e) => {
+        dragEndhandler(e, props.toDo.id)
+      }}
+      className={dragging ? "toDoItem dragging" : "toDoItem"}
+
     >
       <input
         type="checkbox"

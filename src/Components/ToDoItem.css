@@ -2,3 +2,7 @@
   color: blueviolet;
   font-size: 2rem;
 }
+
+.dragging {
+  display: none;
+}
