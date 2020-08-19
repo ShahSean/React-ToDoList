@@ -3,12 +3,12 @@ import "./ToDoItem.css";
 
 export default function ToDoItem(props) {
   const [dragging, setDragging] = useState(false)
-  let draggTask = useRef();
+  const draggTask = useRef();
 
   // https://www.youtube.com/watch?v=Q1PYQPK9TaM
   const dragStartHandler = (e, task) => {
     draggTask.current = task
-    // console.log("Current task is: ", draggTask.current.id)
+    console.log("drag Task is: ", draggTask.current)
     setTimeout(() =>{
       setDragging(true);
     }, 0)
@@ -19,20 +19,22 @@ export default function ToDoItem(props) {
   }
   //
   const dragEnterHandler = (e, id) => {
-    // console.log("Drag Entering ", "\Drag ID: ", id)
   }
   //
-  const dragEnterOver = (e, nextTaskId) => {
-    const fromIndex = props.findIndex( task => 
-       task.id === draggTask.current.id
+  const dragOverHandler = (e, nextTaskId) => {
+  
+    console.log("id is: ", draggTask.current)
+
+    const fromIndex = props.toDoList.findIndex( task => 
+       task.id === props.toDo.id
     )
-    const toIndex = props.findIndex((task) => {
-      return task.id === nextTaskId
-    })
+    const toIndex = props.toDoList.findIndex( task => 
+      task.id === nextTaskId
+    )
 
 
-    console.log("Drag over is : ", fromIndex)
-    console.log("current Item ID is :" , toIndex)
+    // console.log("Drag over is : ", fromIndex)
+    // console.log("current Item ID is :" , toIndex)
   }
 
   return (
@@ -48,7 +50,7 @@ export default function ToDoItem(props) {
         dragEnterHandler(e, props.toDo.id)
       }}
       onDragOver={(e) => {
-        dragEnterOver(e, props.toDo.id)
+        dragOverHandler(e, props.toDo.id)
       }}
       className={dragging ? "toDoItem dragging" : "toDoItem"}
 
