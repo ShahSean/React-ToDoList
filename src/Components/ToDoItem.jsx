@@ -3,12 +3,12 @@ import "./ToDoItem.css";
 
 export default function ToDoItem(props) {
   const [dragging, setDragging] = useState(false)
-  const draggTask = useRef();
+  let draggTask = useRef(null);
 
   // https://www.youtube.com/watch?v=Q1PYQPK9TaM
   const dragStartHandler = (e, task) => {
     draggTask.current = task
-    console.log("drag Task is: ", draggTask.current)
+    // console.log("drag Task is: ", draggTask.current)
     setTimeout(() =>{
       setDragging(true);
     }, 0)
@@ -23,14 +23,14 @@ export default function ToDoItem(props) {
   //
   const dragOverHandler = (e, nextTaskId) => {
   
-    console.log("id is: ", draggTask.current)
+    console.log("id is: ", props.toDo.id)
 
-    const fromIndex = props.toDoList.findIndex( task => 
-       task.id === props.toDo.id
-    )
-    const toIndex = props.toDoList.findIndex( task => 
-      task.id === nextTaskId
-    )
+    // const fromIndex = props.toDoList.findIndex( task => 
+    //    task.id === props.toDo.id
+    // )
+    // const toIndex = props.toDoList.findIndex( task => 
+    //   task.id === nextTaskId
+    // )
 
 
     // console.log("Drag over is : ", fromIndex)
