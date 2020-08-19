@@ -4,6 +4,7 @@ import "./ToDoItem.css";
 export default function ToDoItem(props) {
   const [dragging, setDragging] = useState(false)
   let draggTask = useRef();
+
   // https://www.youtube.com/watch?v=Q1PYQPK9TaM
   const dragStartHandler = (e, task) => {
     draggTask.current = task
@@ -12,24 +13,26 @@ export default function ToDoItem(props) {
       setDragging(true);
     }, 0)
   };
-
+ //
   const dragEndhandler = (e, id) =>{
     setDragging(false);
   }
+  //
   const dragEnterHandler = (e, id) => {
     // console.log("Drag Entering ", "\Drag ID: ", id)
   }
+  //
   const dragEnterOver = (e, nextTaskId) => {
-    // const fromIndex = props.toDo.findIndex((el) => {
-    //   return el.id === id
-    // })
-    // const toIndex = props.toDo.findIndex((el) => {
-    //   return el.id === id
-    // // })
+    const fromIndex = props.findIndex( task => 
+       task.id === draggTask.current.id
+    )
+    const toIndex = props.findIndex((task) => {
+      return task.id === nextTaskId
+    })
 
 
-    // console.log("Drag over is : ", nextTaskId)
-    // console.log("current Item ID is :" , e)
+    console.log("Drag over is : ", fromIndex)
+    console.log("current Item ID is :" , toIndex)
   }
 
   return (
