@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NavBar from "./Components/NavBar.jsx";
 import ToDoContainer from "./Components/ToDoContainer.jsx";
 import { v4 as uuidv4 } from "uuid";
