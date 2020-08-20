@@ -1,13 +1,17 @@
-import React, {useState, useRef}from "react";
+import React, {useState, useEffect ,useRef}from "react";
 import "./ToDoItem.css";
+
+let currentDraggingId = null
 
 export default function ToDoItem(props) {
   const [dragging, setDragging] = useState(false)
-  let draggTask = useRef(null);
 
+  const dragTask = useRef(props.toDo.id)
+  
   // https://www.youtube.com/watch?v=Q1PYQPK9TaM
   const dragStartHandler = (e, task) => {
-    draggTask.current = task
+    currentDraggingId = task
+    // dragTask.current = task
     // console.log("drag Task is: ", draggTask.current)
     setTimeout(() =>{
       setDragging(true);
@@ -16,18 +20,21 @@ export default function ToDoItem(props) {
  //
   const dragEndhandler = (e, id) =>{
     setDragging(false);
+    currentDraggingId = null;
   }
   //
   const dragEnterHandler = (e, id) => {
   }
   //
   const dragOverHandler = (e, nextTaskId) => {
-  
-    console.log("id is: ", props.toDo.id)
 
-    // const fromIndex = props.toDoList.findIndex( task => 
-    //    task.id === props.toDo.id
-    // )
+    console.log("id is: ", currentDraggingId.id)
+
+
+    const fromIndex = props.toDoList.findIndex( task => 
+       task.id === currentDraggingId.id
+    )
+    console.log("fromIndex is :", fromIndex)
     // const toIndex = props.toDoList.findIndex( task => 
     //   task.id === nextTaskId
     // )
