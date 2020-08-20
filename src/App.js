@@ -39,12 +39,20 @@ function App() {
     setToDo(tempToDo);
   };
 
+  let dndHandler =(fromIndex, toIndex) =>{
+    const tempToDo = [...toDo];
+    tempToDo.splice(toIndex, 0, tempToDo.splice(fromIndex, 1)[0]);
+    setToDo(tempToDo);
+    console.log("dnd Handler Was called")
+  }
+
   return (
     <div id="body-container">
       <h2 id="main-header"> To Do List </h2>
       <NavBar addTaskHandler={addTaskHandler} />
       <ToDoContainer
         toDo={toDo}
+        dndHandler={dndHandler}
         completedTaskHandler={completedTaskHandler}
         deleteHandler={deleteHandler}
       />
