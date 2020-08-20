@@ -1,40 +1,58 @@
 import React, {useState, useEffect ,useRef}from "react";
 import "./ToDoItem.css";
 
-let currentDraggingId = null
+let onDragTask = null
 
 export default function ToDoItem(props) {
   const [dragging, setDragging] = useState(false)
 
-  const dragTask = useRef(props.toDo.id)
   
   // https://www.youtube.com/watch?v=Q1PYQPK9TaM
   const dragStartHandler = (e, task) => {
-    currentDraggingId = task
-    // dragTask.current = task
-    // console.log("drag Task is: ", draggTask.current)
+    onDragTask = task
+    const fromIndex = props.toDoList.findIndex( task => 
+      task.id === onDragTask.id
+   )
+  //  // /////////////
+  //  const getNextDragElement = () => {
+  //   const nonDraggingList = [...props.toDoList.splice(fromIndex, 1)];
+  //   return nonDraggingList.reduce((closest, tsk) => {
+  //       const box = props.toDo.getBoundingCLientRect();
+  //       // The space between the center of the box and our mouse cursor
+  //       const offset = e.clientY - box.top - box.height /2
+  //       // When we are above a Box, we get negtive numbers !
+  //     if (offset < 0 && offset > closest.offset) {
+  //       return { offset: offset, element: tsk };
+  //     } else {
+  //       return closest;
+  //     }
+  //   },
+  //   {offset: Number.NEGATIVE_INFINITY}).element
+  //   }
+  //   console.log("here is the next: ", getNextDragElement())
+
+///////////
     setTimeout(() =>{
       setDragging(true);
     }, 0)
   };
  //
   const dragEndhandler = (e, id) =>{
+// update the State with the next element index
     setDragging(false);
-    currentDraggingId = null;
+    onDragTask= null;
   }
+  
   //
   const dragEnterHandler = (e, id) => {
   }
   //
   const dragOverHandler = (e, nextTaskId) => {
-
-    console.log("id is: ", currentDraggingId.id)
-
-
-    const fromIndex = props.toDoList.findIndex( task => 
-       task.id === currentDraggingId.id
-    )
-    console.log("fromIndex is :", fromIndex)
+// Do Calculations about the place and pass it to drag EndHander
+    setTimeout(() =>{
+      ;
+    }, 2)
+    console.log("Dragging over:", nextTaskId, "position is:", e.clientY)
     // const toIndex = props.toDoList.findIndex( task => 
     //   task.id === nextTaskId
     // )
@@ -74,5 +92,6 @@ export default function ToDoItem(props) {
       </label>
       <button onClick={() => props.delete(props.toDo.id)}> delete</button>
     </div>
-  );
-}
+  )
+    }
+
