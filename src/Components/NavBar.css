@@ -9,6 +9,20 @@
   justify-content: center;
 }
 #nav-container input {
+  width: 80%;
+  height: 92%;
+  font-size: large;
+  font-family: "Indie Flower", cursive;
   outline: none;
   border: none;
+  border-radius: 0.4rem;
+  background-color: rgba(247, 247, 247, 0.781);
+}
+
+#nav-container button {
+  width: 15%;
+  height: 92%;
+  border: none;
+  border-radius: 0.8rem;
+  margin-left: 2%;
 }
