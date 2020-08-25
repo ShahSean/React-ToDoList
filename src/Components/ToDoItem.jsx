@@ -8,18 +8,19 @@ let toIndex = null;
 
 export default function ToDoItem(props) {
   const [dragging, setDragging] = useState(false)
+  const [onEdit, setOnEdit] = useState(false);
   // const [tempUsrInput, setTempUsrInput] = useState(props.toDo.text);
 
   
   //
-  const dragStartHandler = (e, task) => {
+  const dragStartHandler = (task) => {
     onDragTask = task
     fromIndex = props.toDoList.findIndex(task => task.id === onDragTask.id)
     setTimeout(() => { setDragging(true) }, 0)
   };
  
   //
-  const dragEndhandler = (e, id) =>{
+  const dragEndhandler = () =>{
     toIndex = props.toDoList.findIndex (task => task.id === nextDraggingTask)
     props.dndHandler(fromIndex, toIndex)
     setDragging(false);
@@ -27,38 +28,33 @@ export default function ToDoItem(props) {
   } 
 
   //
-  const dragOverHandler = (e, nextTaskId) => {
+  const dragOverHandler = (nextTaskId) => {
     nextDraggingTask = nextTaskId;  
   }
   
   //
   let editTaskHandler = (id) => {
-    return (
-      <>
-        {console.log("hi")}
-        <input 
+    if (onEdit) {
+        return <input 
           type="text" 
           value={props.toDo.text} 
           onChange={props.editTaskHandler(id)}
         /> 
-        <h1>Helllllo</h1>
-      </>
-    )
+        
+    }
   }
-
-
 
   return (
     <div
       draggable
       onDragStart={(e) => {
-        dragStartHandler(e, props.toDo);
+        dragStartHandler(props.toDo);
       }}
       onDragEnd={(e) => {
-        dragEndhandler(e, props.toDo.id)
+        dragEndhandler()
       }}
       onDragOver={(e) => {
-        dragOverHandler(e, props.toDo.id)
+        dragOverHandler(props.toDo.id)
       }}
       className={dragging ? "toDoItem dragging" : "toDoItem"}
     >
@@ -67,7 +63,8 @@ export default function ToDoItem(props) {
         onChange={() => props.completedTask(props.toDo.id)}
       />
       <label
-      onDoubleClick={ ()=> editTaskHandler(props.toDo.id) }
+      onDoubleClick={ () => {setOnEdit(true)
+            editTaskHandler(props.toDo.id) }}
         style={{ textDecoration: props.toDo.isDone ? "line-through" : "" }}
       >
         {" "}
