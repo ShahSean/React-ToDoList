@@ -1,21 +1,11 @@
-import React, { useState,useEffect } from "react";
+import React, { useState} from "react";
 import NavBar from "./Components/NavBar.jsx";
 import ToDoContainer from "./Components/ToDoContainer.jsx";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 
 function App() {
-  // const [toDo, setToDo] = useState(localStorage.getItem("toDo"));
-
   const [toDo, setToDo] = useLocalStorage("toDo", []);
-
-
-
-  //Saving Values into Local Storage after any change on State
- // https://www.robinwieruch.de/local-storage-react
-  // useEffect(() => {
-  //   localStorage.setItem("toDo", JSON.stringify(toDo));
-  // });
 
   // Custom Hook to handle Local Storage
   // https://usehooks.com/useLocalStorage/
@@ -89,8 +79,6 @@ function useLocalStorage(key, initialValue) {
     tempToDo.forEach((todo, index) => {
       if (todo.id === id) todo.text = value;
     });
-    
-    
     setToDo(tempToDo);
   }
 

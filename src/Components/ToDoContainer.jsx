@@ -3,7 +3,7 @@ import ToDoItem from "./ToDoItem.jsx";
 import "./ToDoContainer.css";
 
 export default function ToDoContainer(props) {
-  return (
+  return(
     <div id="to-do-container">
       <div>
         {addTaskHandler(props)}
