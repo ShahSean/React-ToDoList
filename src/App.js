@@ -32,7 +32,6 @@ function App() {
 
   let deleteHandler = (id) => {
     const tempToDo = [...toDo];
-    tempToDo.filter((toDo) => toDo.id === id);
     tempToDo.map((todo, index) => {
       if (todo.id === id) tempToDo.splice(index, 1);
     });
@@ -44,8 +43,14 @@ function App() {
     tempToDo.splice(toIndex, 0, tempToDo.splice(fromIndex, 1)[0]);
     setToDo(tempToDo);
   }
-  let editTaskHandler = (id) =>{
+
+  let editTaskHandler = (e, id ) =>{
     console.log("edit handler was called", id)
+    const tempToDo = [...toDo];
+    tempToDo.map((todo, index) => {
+      if (todo.id === id) tempToDo.text = e.target.value;
+    });
+    setToDo(tempToDo);
   }
 
   return (

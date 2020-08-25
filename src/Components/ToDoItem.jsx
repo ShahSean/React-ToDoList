@@ -8,6 +8,8 @@ let toIndex = null;
 
 export default function ToDoItem(props) {
   const [dragging, setDragging] = useState(false)
+  // const [tempUsrInput, setTempUsrInput] = useState(props.toDo.text);
+
   
   //
   const dragStartHandler = (e, task) => {
@@ -33,12 +35,13 @@ export default function ToDoItem(props) {
   let editTaskHandler = (id) => {
     return (
       <>
-        {console.log("hi",id)}
+        {console.log("hi")}
         <input 
           type="text" 
           value={props.toDo.text} 
-          onChange={props.editTaskHandler}
-        />
+          onChange={props.editTaskHandler(id)}
+        /> 
+        <h1>Helllllo</h1>
       </>
     )
   }
