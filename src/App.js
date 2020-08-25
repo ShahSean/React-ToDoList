@@ -1,21 +1,59 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import NavBar from "./Components/NavBar.jsx";
 import ToDoContainer from "./Components/ToDoContainer.jsx";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 
 function App() {
-  const [toDo, setToDo] = useState([
-    { text: "this is a text", isDone: false, id: uuidv4() },
-    { text: "Take out Trash", isDone: true, id: uuidv4() },
-    { text: "This is a simple Task", isDone: false, id: uuidv4() },
-  ]);
+  // const [toDo, setToDo] = useState(localStorage.getItem("toDo"));
 
-  // Saving Values into Local Storage after any change on State
-  // https://www.robinwieruch.de/local-storage-react
+  const [toDo, setToDo] = useLocalStorage("toDo", []);
+
+
+
+  //Saving Values into Local Storage after any change on State
+ // https://www.robinwieruch.de/local-storage-react
   // useEffect(() => {
   //   localStorage.setItem("toDo", JSON.stringify(toDo));
   // });
+
+  // Custom Hook to handle Local Storage
+  // https://usehooks.com/useLocalStorage/
+function useLocalStorage(key, initialValue) {
+  // State to store our value
+  // Pass initial state function to useState so logic is only executed once
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      // Get from local storage by key
+      const item = window.localStorage.getItem(key);
+      // Parse stored json or if none return initialValue
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      // If error also return initialValue
+      console.log(error);
+      return initialValue;
+    }
+  });
+
+  // Return a wrapped version of useState's setter function that ...
+  // ... persists the new value to localStorage.
+  const setValue = value => {
+    try {
+      // Allow value to be a function so we have same API as useState
+      const valueToStore =
+        value instanceof Function ? value(storedValue) : value;
+      // Save state
+      setStoredValue(valueToStore);
+      // Save to local storage
+      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    } catch (error) {
+      // A more advanced implementation would handle the error case
+      console.log(error);
+    }
+  };
+
+  return [storedValue, setValue];
+}
 
   let addTaskHandler = (taskText) => {
     const newTask = [...toDo, { text: taskText, isDone: false, id: uuidv4() }];

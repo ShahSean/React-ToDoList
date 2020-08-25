@@ -28,7 +28,7 @@ export default function NavBar(props) {
 
   return (
     <div id="nav-container">
-      <button>Search</button>
+      {/* <button>Search</button> */}
       <input
         size="25"
         type="text"
