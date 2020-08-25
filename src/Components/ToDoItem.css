@@ -1,8 +1,25 @@
 .toDoItem {
   color: blueviolet;
   font-size: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .dragging {
   display: none;
+}
+.check-box {
+  flex-basis: 10%;
+  margin: auto 5px;
+  justify-items: flex-start;
+}
+.del-btn {
+  flex-basis: 15%;
+  justify-items: flex-end;
+  margin: auto 5%;
+  border: none;
+  border-radius: 0.4rem;
+}
+.on-edit-task {
 }

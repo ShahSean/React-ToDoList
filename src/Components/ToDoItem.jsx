@@ -56,6 +56,7 @@ export default function ToDoItem(props) {
         value={text}
         // ref={inputRef}
         onChange={(e) => setText(e.target.value)}
+        className="on-edit-task"
       />
     </form>
   ) : (
@@ -75,6 +76,7 @@ export default function ToDoItem(props) {
       <input
         type="checkbox"
         onChange={() => props.completedTask(props.toDo.id)}
+        className="check-box"
       />
 
       <label
@@ -87,7 +89,7 @@ export default function ToDoItem(props) {
       >
         {props.toDo.text}
       </label>
-      <button onClick={() => props.delete(props.toDo.id)}> delete</button>
+      <button onClick={() => props.delete(props.toDo.id)} className="del-btn"> delete</button>
     </div>
   );
 }

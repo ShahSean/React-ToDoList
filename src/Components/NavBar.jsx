@@ -36,7 +36,7 @@ export default function NavBar(props) {
         onChange={userInputHandler}
         value={tempUsrInput}
       />
-      <button onClick={addBtnHandler}>add</button>
+      <button onClick={addBtnHandler}>Add Task</button>
     </div>
   );
 }
