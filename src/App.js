@@ -43,7 +43,9 @@ function App() {
     const tempToDo = [...toDo];
     tempToDo.splice(toIndex, 0, tempToDo.splice(fromIndex, 1)[0]);
     setToDo(tempToDo);
-    console.log("dnd Handler Was called")
+  }
+  let editTaskHandler = (id) =>{
+    console.log("edit handler was called", id)
   }
 
   return (
@@ -52,6 +54,7 @@ function App() {
       <NavBar addTaskHandler={addTaskHandler} />
       <ToDoContainer
         toDo={toDo}
+        editTaskHandler = {editTaskHandler}
         dndHandler={dndHandler}
         completedTaskHandler={completedTaskHandler}
         deleteHandler={deleteHandler}

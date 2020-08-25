@@ -28,6 +28,22 @@ export default function ToDoItem(props) {
   const dragOverHandler = (e, nextTaskId) => {
     nextDraggingTask = nextTaskId;  
   }
+  
+  //
+  let editTaskHandler = (id) => {
+    return (
+      <>
+        {console.log("hi",id)}
+        <input 
+          type="text" 
+          value={props.toDo.text} 
+          onChange={props.editTaskHandler}
+        />
+      </>
+    )
+  }
+
+
 
   return (
     <div
@@ -48,6 +64,7 @@ export default function ToDoItem(props) {
         onChange={() => props.completedTask(props.toDo.id)}
       />
       <label
+      onDoubleClick={ ()=> editTaskHandler(props.toDo.id) }
         style={{ textDecoration: props.toDo.isDone ? "line-through" : "" }}
       >
         {" "}
