@@ -24,15 +24,17 @@ function App() {
 
   let completedTaskHandler = (id) => {
     const newToDo = [...toDo];
-    newToDo.map((todo) => {
-      if (todo.id === id) todo.isDone = !todo.isDone;
+    newToDo.forEach((todo) => {
+      if (todo.id === id) { 
+        todo.isDone = !todo.isDone;
+      }
     });
     setToDo(newToDo);
   };
 
   let deleteHandler = (id) => {
     const tempToDo = [...toDo];
-    tempToDo.map((todo, index) => {
+    tempToDo.forEach((todo, index) => {
       if (todo.id === id) tempToDo.splice(index, 1);
     });
     setToDo(tempToDo);
@@ -44,12 +46,13 @@ function App() {
     setToDo(tempToDo);
   }
 
-  let editTaskHandler = (e, id ) =>{
-    console.log("edit handler was called", id)
+  let editTaskHandler = (id, value) =>{
     const tempToDo = [...toDo];
-    tempToDo.map((todo, index) => {
-      if (todo.id === id) tempToDo.text = e.target.value;
+    tempToDo.forEach((todo, index) => {
+      if (todo.id === id) todo.text = value;
     });
+    
+    
     setToDo(tempToDo);
   }
 

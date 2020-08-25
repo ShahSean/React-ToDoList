@@ -1,5 +1,6 @@
-import React, {useState}from "react";
+import React, {useState, useRef, useEffect}from "react";
 import "./ToDoItem.css";
+
 
 let onDragTask = null;
 let nextDraggingTask = null;
@@ -9,6 +10,8 @@ let toIndex = null;
 export default function ToDoItem(props) {
   const [dragging, setDragging] = useState(false)
   const [onEdit, setOnEdit] = useState(false);
+  const [text, setText] = useState(props.toDo.text);
+  // const inputRef = useRef(null);
   // const [tempUsrInput, setTempUsrInput] = useState(props.toDo.text);
 
   
@@ -32,19 +35,32 @@ export default function ToDoItem(props) {
     nextDraggingTask = nextTaskId;  
   }
   
-  //
-  let editTaskHandler = (id) => {
-    if (onEdit) {
-        return <input 
-          type="text" 
-          value={props.toDo.text} 
-          onChange={props.editTaskHandler(id)}
-        /> 
-        
-    }
-  }
+  // useEffect(() => {
+  //   console.log('running effect', inputRef);
+  //   if (inputRef.current) {
+  //     inputRef.current.focus();
+  //   }
+  // }, []);
+  
 
   return (
+    onEdit?
+    <form onSubmit={e=> {
+      e.preventDefault();
+      setOnEdit(false);
+      props.editTaskHandler(props.toDo.id, e.target.elements[0].value);
+      // 
+      }}>
+      <input 
+          name="text"
+          type="text" 
+          value={text}
+          // ref={inputRef}
+          onChange={(e)=> setText(e.target.value)}
+
+        />
+    </form>
+    :
     <div
       draggable
       onDragStart={(e) => {
@@ -62,10 +78,16 @@ export default function ToDoItem(props) {
         type="checkbox"
         onChange={() => props.completedTask(props.toDo.id)}
       />
+
       <label
-      onDoubleClick={ () => {setOnEdit(true)
-            editTaskHandler(props.toDo.id) }}
-        style={{ textDecoration: props.toDo.isDone ? "line-through" : "" }}
+      onDoubleClick={ () => {
+            setOnEdit(true)
+            // editTaskHandler(props.toDo.id)
+          }}
+        style={{
+          textDecoration: props.toDo.isDone ? 
+          "line-through" :
+          "" }}
       >
         {" "}
         {props.toDo.text}{" "}
