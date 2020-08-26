@@ -43,11 +43,11 @@ export default function ToDoItem(props) {
 
   return onEdit ? (
     <form
+      className="on-edit-task"
       onSubmit={(e) => {
         e.preventDefault();
         setOnEdit(false);
         props.editTaskHandler(props.toDo.id, e.target.elements[0].value);
-        //
       }}
     >
       <input
@@ -56,7 +56,7 @@ export default function ToDoItem(props) {
         value={text}
         // ref={inputRef}
         onChange={(e) => setText(e.target.value)}
-        className="on-edit-task"
+        className="on-edit-input"
       />
     </form>
   ) : (
@@ -80,6 +80,7 @@ export default function ToDoItem(props) {
       />
 
       <label
+        id="task-text"
         onDoubleClick={() => {
           setOnEdit(true);
         }}

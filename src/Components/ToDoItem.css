@@ -2,15 +2,19 @@
   color: blueviolet;
   font-size: 2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  border: blue;
+}
+#task-text {
+  width: 60%;
 }
 
 .dragging {
   display: none;
 }
 .check-box {
-  flex-basis: 10%;
+  flex-basis: 5%;
   margin: auto 5px;
   justify-items: flex-start;
 }
@@ -21,5 +25,9 @@
   border: none;
   border-radius: 0.4rem;
 }
-.on-edit-task {
+
+.on-edit-input {
+  width: 60%;
+  border: none;
+  border-radius: 0.4rem;
 }
